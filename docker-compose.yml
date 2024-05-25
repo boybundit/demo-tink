@@ -1,0 +1,12 @@
+services:
+  vault:
+    image: vault:1.13.3
+    restart: always
+    container_name: vault
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "root"
+    ports:
+      - "8200:8200"
+    cap_add:
+      - IPC_LOCK
+    command: "vault server -dev-tls -dev-listen-address=0.0.0.0:8200"
